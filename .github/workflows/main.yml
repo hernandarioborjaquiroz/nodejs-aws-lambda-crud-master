@@ -39,11 +39,10 @@ jobs:
 
       # 5️⃣ Desplegar el servicio a AWS Lambda
       - name: 🚀 Deploy Serverless Service
-        run: |
-          echo "Starting deployment to production..."
-          npx serverless deploy --stage production --verbose
-
-
-
-          echo "Starting deployment to production..."
-          npx serverless deploy --stage production --verbose
+        
+        run: npx serverless deploy --stage production --verbose
+        env:
+          # Asegúrese de que sus credenciales de AWS estén configuradas aquí 
+          # o a nivel de 'job' (como se hizo en el deploy.yml de ejemplo).
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

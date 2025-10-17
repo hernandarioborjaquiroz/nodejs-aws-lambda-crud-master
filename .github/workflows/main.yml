@@ -1,6 +1,5 @@
-name: 🚀 Deploy Service to AWS Lambda
+name: Deploy to Production
 
-# Se ejecuta en cada push a la rama 'main'
 on:
   push:
     branches:
@@ -8,37 +7,36 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to Production
     runs-on: ubuntu-latest
-    environment: production  # opcional, útil si usas GitHub Environments
 
     env:
-      AWS_REGION: us-west-1  # Asegúrate de que coincide con tu serverless.yml
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: us-west-1
 
     steps:
-      # 1️⃣ Checkout del repositorio
-      - name: 📦 Checkout repository
+      - name: 📥 Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Instalar Node.js
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          node-version: '20.x' 
           cache: 'npm'
-      # 3️⃣ Instalar dependencias
-      - name: 📥 Install dependencies
-        run: npm ci
-      # 4️⃣ Instalar Serverless Framework globalmente
-      - name: 🧰 Install Serverless Framework
+
+      # PASO REINSERTADO: Instalación de dependencias 
+      # Sin este paso, el despliegue falla por librerías faltantes (middy, uuid, etc.)
+      - name: 📦 Install dependencies
+        run: npm ci 
+
+      - name: 🔨 Install Serverless Framework
         run: npm install -g serverless
-      # 5️⃣ Desplegar el servicio a AWS Lambda
+
+      # PASO CORREGIDO: Despliegue del Servicio 
       - name: 🚀 Deploy Serverless Service
+        # El comando incluye --verbose para mejor depuración
         run: npx serverless deploy --stage production --verbose
         env:
-          # Asegúrese de que sus credenciales de AWS estén configuradas aquí 
-          # o a nivel de 'job' (como se hizo en el deploy.yml de ejemplo).
+          # Las credenciales se configuran como variables de entorno
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+

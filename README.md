@@ -294,6 +294,8 @@ SECRET KEY
 
 <img width="1823" height="900" alt="image" src="https://github.com/user-attachments/assets/e8ecc29c-25a6-4c5e-b895-00432eb7f32f" />
 
+SECRET AND VARIABLES 
+<img width="1847" height="852" alt="image" src="https://github.com/user-attachments/assets/7c68b1c3-ef10-434b-95ec-37e10ec73168" />
 
 serverless offline
 ```

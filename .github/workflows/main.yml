@@ -1,39 +1,46 @@
-name: Deploy to Production
+name: deploy-coffee-shop-api
+
 on:
   push:
     branches:
       - main
+      - dev
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      AWS_REGION: us-west-1  # 👈 La indentación aquí es crucial
     
     steps:
-      - name: 📥 Checkout repository
-        uses: actions/checkout@v4
-
-      # Setup Node.js
-      - name: ⚙️ Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20.x' # Usamos '20' o '20.x'
-          cache: 'npm'
-
-      # PASO RESTAURADO: Instalación de dependencias (Líneas 32-34 en su imagen)
-      - name: 📦 Install dependencies
-        # 'npm ci' es mejor para CI/CD que 'npm install'
-        run: npm ci 
-
-      # Instalación del Serverless Framework
-      - name: 🔨 Install Serverless Framework
-        run: npm install -g serverless
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.x'
         
-      # PASO RESTAURADO Y CORREGIDO: Despliegue del Servicio
-      - name: 🚀 Deploy Serverless Service
-        # Se usa --verbose para obtener detalles si falla de nuevo
-        run: npx serverless deploy --stage production --verbose
-        env:
-          # Las credenciales se pasan directamente al comando de Serverless
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    - name: Install dependencies
+      # 🚨 CORRECCIÓN: Quitamos el 'working-directory' porque package.json está en la raíz
+      run: npm install
+      
+    - name: Install Serverless Framework
+      run: npm install -g serverless
+      
+    - name: Deploy to AWS (Dev)
+      if: github.ref == 'refs/heads/dev'
+      # 🚨 CORRECCIÓN: Ejecutamos el despliegue desde la raíz, sin CD ni --config
+      run: npx serverless deploy --stage dev
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        
+    - name: Deploy to AWS (Prod)
+      if: github.ref == 'refs_heads/main'
+      # 🚨 CORRECCIÓN: Ejecutamos el despliegue desde la raíz, sin CD ni --config
+      run: npx serverless deploy --stage prod
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+
+

@@ -22,6 +22,9 @@ This template does not include any kind of persistence (database). For more adva
 
 ```
 $ serverless deploy
+
+<img width="1308" height="720" alt="image" src="https://github.com/user-attachments/assets/7842b16f-bb29-49e2-b7bc-199863cc4386" />
+
 ```
 
 After deploying, you should see output similar to:

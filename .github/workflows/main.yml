@@ -1,6 +1,6 @@
-name: Deploy Service to AWS Lambda
+name: 🚀 Deploy Service to AWS Lambda
 
-# Se ejecuta en cada push a la rama 'main' (similar a su condición: Run if [ "$main" == "main" ]; then)
+# Se ejecuta en cada push a la rama 'main'
 on:
   push:
     branches:
@@ -8,49 +8,38 @@ on:
 
 jobs:
   deploy:
-    # El paso 'Set up job' se ejecuta en un runner de Ubuntu
+    name: Deploy to Production
     runs-on: ubuntu-latest
-    environment: production # Usa un entorno llamado 'production' (opcional)
+    environment: production  # opcional, útil si usas GitHub Environments
 
-    # Configuración de variables de entorno para las credenciales de AWS
     env:
+      AWS_REGION: us-west-1  # asegúrate que coincide con tu serverless.yml
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: us-west-1 # Coincide con la región de su serverless.yml
 
     steps:
-      # 1. Checkout repository
-      - name: Checkout repository
+      # 1️⃣ Checkout del repositorio
+      - name: 📦 Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Setup Node.js
-      - name: Setup Node.js
+      # 2️⃣ Instalar Node.js
+      - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Coincide con el runtime nodejs20.x en serverless.yml
+          node-version: '20'   # Coincide con tu runtime nodejs20.x
           cache: 'npm'
 
-      # 3. Install dependencies
-      - name: Install dependencies
-        run: npm install
+      # 3️⃣ Instalar dependencias
+      - name: 📥 Install dependencies
+        run: npm ci
 
-      # 4. Install Serverless Framework
-      # Lo instalamos globalmente o localmente si no está en el package.json
-      - name: Install Serverless Framework
+      # 4️⃣ Instalar Serverless Framework (global)
+      - name: 🧰 Install Serverless Framework
         run: npm install -g serverless
 
-      # 5. Configurar AWS credentials (No es un paso explícito, se hace con el 'env' y el comando 'serverless deploy')
-
-      # 6. Deploy to AWS Lambda
-      # ¡IMPORTANTE! Añadimos --verbose para obtener el log detallado del error 
-      # y --stage para desplegar a 'production' (similar a "Deploying to production...")
-      - name: Deploy Serverless Service
+      # 5️⃣ Desplegar a AWS Lambda
+      - name: 🚀 Deploy Serverless Service
         run: |
-          echo "Deploying to production..."
-          # Usamos --stage production. Coincide con el arn y el nombre de la tabla en serverless.yml
+          echo "Starting deployment to production..."
           npx serverless deploy --stage production --verbose
-        env:
-          # Estas credenciales solo son necesarias si no se definieron a nivel de 'jobs'
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 

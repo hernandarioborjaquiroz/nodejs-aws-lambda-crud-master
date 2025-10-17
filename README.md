@@ -108,6 +108,12 @@ Which should result in response similar to the following (removed `input` conten
 
 ### Local development
 
+
+<img width="1413" height="240" alt="image" src="https://github.com/user-attachments/assets/804c00e6-2dd7-4ae9-ac73-e9d6177fb0eb" />
+
+
+
+
 You can invoke your function locally by using the following command:
 
 ```bash

@@ -6,10 +6,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-   # Asegúrese de tener sus Secrets (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY) configurados en GitHub
-    env:
+      env:
       AWS_REGION: us-west-1
-
     steps:
       - name: 📥 Checkout repository
         uses: actions/checkout@v4

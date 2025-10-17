@@ -13,7 +13,7 @@ jobs:
     environment: production  # opcional, útil si usas GitHub Environments
 
     env:
-      AWS_REGION: us-west-1  # asegúrate que coincide con tu serverless.yml
+      AWS_REGION: us-west-1  # Asegúrate de que coincide con tu serverless.yml
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
@@ -26,20 +26,19 @@ jobs:
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'   # Coincide con tu runtime nodejs20.x
+          node-version: '20'
           cache: 'npm'
 
       # 3️⃣ Instalar dependencias
       - name: 📥 Install dependencies
         run: npm ci
 
-      # 4️⃣ Instalar Serverless Framework (global)
+      # 4️⃣ Instalar Serverless Framework globalmente
       - name: 🧰 Install Serverless Framework
         run: npm install -g serverless
 
-      # 5️⃣ Desplegar a AWS Lambda
+      # 5️⃣ Desplegar el servicio a AWS Lambda
       - name: 🚀 Deploy Serverless Service
         run: |
           echo "Starting deployment to production..."
           npx serverless deploy --stage production --verbose
-

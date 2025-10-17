@@ -1,3 +1,25 @@
+Desarrollo de API de AWS AppSync v2
+El desafío
+Cree una API de Serverless Framework con AWS AppSync que admita la funcionalidad CRUD (crear, leer, actualizar, eliminar) *no utilice plantillas de mapeo directamente a DynamoDB desde AppSync y utilice la canalización CI/CD de GitHub Actions, AWS CodePipeline o Serverless Pro CI/CD.
+Puede tomar capturas de pantalla de la configuración de CI/CD e incluirlas en el archivo README.
+La CI/CD debe activar una implementación basada en un push git a la rama maestra que pasa e implementa la API de Serverless Framework de backend.
+Requisitos
+1.	Toda la infraestructura de AWS debe automatizarse con IAC utilizando Serverless Framework y CloudFormation según sea necesario
+2.	La API de AppSync debe almacenar datos en DynamoDB
+3.	Debe haber 4-5 lambdas que incluyan la siguiente funcionalidad CRUD (Crear, Leer, Actualizar, Eliminar) *no utilice plantillas de mapeo directamente a DynamoDB desde AppSync
+4.	Construir la canalización de CI/CD para soportar implementaciones de múltiples etapas
+5.	La plantilla debe estar completamente funcional y documentada.
+6.	Un repositorio público de GitHub debe compartirse con confirmaciones frecuentes
+7.	Se debe grabar un video ( www.loom.com ) de usted hablando sobre el código de la aplicación, IAC y cualquier área adicional que desee resaltar en su solución para demostrar habilidades adicionales.
+Por favor, dedique a esto únicamente el tiempo que considere razonable.
+Opcionalmente
+Cree una interfaz con ReactJS y Material UI que use la biblioteca Amplify para conectarse a su API AppSync para la funcionalidad CRUD.
+
+
+
+
+
+
 <!--
 title: 'AWS Simple HTTP Endpoint example in NodeJS'
 description: 'This template demonstrates how to make a simple HTTP API with Node.js running on AWS Lambda and API Gateway using the Serverless Framework.'

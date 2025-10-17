@@ -84,7 +84,8 @@ You can invoke your function locally by using the following command:
 
 ```bash
 serverless invoke local --function hello
-```
+```<img width="1485" height="240" alt="image" src="https://github.com/user-attachments/assets/b9ed174f-a31c-4642-bca3-6f1cad93dd2f" />
+
 
 Which should result in response similar to the following:
 

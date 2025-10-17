@@ -6,7 +6,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    # Asegúrese de tener sus Secrets (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY) configurados en GitHub
+   # Asegúrese de tener sus Secrets (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY) configurados en GitHub
     env:
       AWS_REGION: us-west-1
 

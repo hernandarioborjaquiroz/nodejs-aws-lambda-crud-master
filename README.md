@@ -103,7 +103,14 @@ After successful deployment, you can call the created application via HTTP:
 curl https://xxxxxxx.execute-api.us-east-1.amazonaws.com/
 ```
 
+
+
+
 Which should result in response similar to the following (removed `input` content for brevity):
+
+<img width="1681" height="733" alt="image" src="https://github.com/user-attachments/assets/22aa44db-fb94-460e-8ddb-6570931b9cb1" />
+
+
 
 ```json
 {

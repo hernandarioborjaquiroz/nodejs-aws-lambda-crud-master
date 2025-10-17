@@ -50,6 +50,8 @@ $ serverless deploy
 
 <img width="1308" height="720" alt="image" src="https://github.com/user-attachments/assets/7842b16f-bb29-49e2-b7bc-199863cc4386" />
 
+<img width="1191" height="571" alt="Captura de pantalla 2025-10-16 193113deploystageprod" src="https://github.com/user-attachments/assets/8e97509f-f628-47a6-b1e1-c044b771b212" />
+
 ```
 
 After deploying, you should see output similar to:
@@ -211,6 +213,16 @@ Which should result in response similar to the following (removed `input` conten
   }
 }
 ```
+Test Postman
+
+<img width="1802" height="962" alt="Captura de pantalla 2025-10-16 202053getstagedev" src="https://github.com/user-attachments/assets/93cd7fac-9f28-4d5d-b5f2-7adba7480fb2" />
+
+<img width="1401" height="907" alt="Captura de pantalla 2025-10-16 223929postamstagedevpost" src="https://github.com/user-attachments/assets/76fa823b-c3f5-4ac6-b885-64d9971a2051" />
+
+<img width="1855" height="963" alt="Captura de pantalla 2025-10-16 194734getstagedev" src="https://github.com/user-attachments/assets/411adbd3-d6a0-4f30-8719-47ef36d80869" />
+
+<img width="1423" height="961" alt="Captura de pantalla 2025-10-16 210845stageprod" src="https://github.com/user-attachments/assets/1b052978-6123-4c92-8f3e-9824292131e2" />
+
 
 ### Local development
 

@@ -6,8 +6,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-      env:
-      AWS_REGION: us-west-1
+    env:
+      AWS_REGION: us-west-1  # 👈 La indentación aquí es crucial
+    
     steps:
       - name: 📥 Checkout repository
         uses: actions/checkout@v4

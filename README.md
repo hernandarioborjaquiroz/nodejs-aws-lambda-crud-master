@@ -289,6 +289,12 @@ It will add the `serverless-offline` plugin to `devDependencies` in `package.jso
 After installation, you can start local emulation with:
 
 ```
+SECRET KEY
+
+
+<img width="1823" height="900" alt="image" src="https://github.com/user-attachments/assets/e8ecc29c-25a6-4c5e-b895-00432eb7f32f" />
+
+
 serverless offline
 ```
 

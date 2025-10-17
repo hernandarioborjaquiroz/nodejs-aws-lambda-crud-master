@@ -111,6 +111,8 @@ Which should result in response similar to the following (removed `input` conten
 You can invoke your function locally by using the following command:
 
 ```bash
+<img width="1388" height="298" alt="image" src="https://github.com/user-attachments/assets/ea727018-0729-482c-ab80-6b2e77f05b7f" />
+
 serverless invoke local --function hello
 ```<img width="1485" height="240" alt="image" src="https://github.com/user-attachments/assets/b9ed174f-a31c-4642-bca3-6f1cad93dd2f" />
 

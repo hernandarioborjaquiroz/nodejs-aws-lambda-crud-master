@@ -1,5 +1,4 @@
 name: CI/CD Pipeline for AWS Lambda CRUD
-
 on:
   push:
     branches:
@@ -9,18 +8,15 @@ on:
     branches:
       - main
       - dev
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     env:
       # Corregido: Se eliminó la definición duplicada 'AWS_REGION: us-east-1'
       AWS_REGION: us-west-1 
       SERVICE_NAME: nodejs-aws-lambda-crud
       # Esta variable de entorno no es usada por Serverless Framework directamente, pero se mantiene si es para scripts
       TASKS_TABLE: TaskTable-${{ github.ref_name }} 
-
     steps:
       # 1. Checkout repository (Se eliminó la línea duplicada de 'name')
       - name: 📥 Checkout repository
@@ -32,20 +28,16 @@ jobs:
         with:
           node-version: '20.x' 
           cache: 'npm'
-
       # 3. Instalación de dependencias (Corregido: Se eliminó la línea de 'node-version' mal indentada y duplicada)
       - name: 📦 Install dependencies
         run: npm ci 
-
       # 4. Run tests (optional) - Se mantiene el orden lógico: primero tests, luego despliegue
       - name: 🧪 Run tests (optional)
         run: npm test
         continue-on-error: true
-
       # 5. Instalar Serverless Framework (Se eliminó el paso duplicado 'Install Serverless Framework')
       - name: 🔨 Install Serverless Framework
         run: npm install -g serverless
-
       # 6. Configurar AWS credentials (Manejo de credenciales estándar y seguro)
       - name: 🔐 Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -66,7 +58,6 @@ jobs:
             echo "🚧 Deploying to development..."
             serverless deploy --stage dev --verbose
           fi
-
       # 8. Serverless info (Para obtener el resultado del despliegue)
       - name: 📝 Serverless info
         run: serverless info --verbose

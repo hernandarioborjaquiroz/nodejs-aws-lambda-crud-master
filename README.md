@@ -1,30 +1,16 @@
-Desafio 5: API REST CRUD de AWS API Gateway
-El desafío
-Cree una API REST de Serverless Framework con AWS API Gateway que admita la funcionalidad CRUD (crear, leer, actualizar, eliminar) *no utilice la integración del proxy de servicio directamente a DynamoDB desde API Gateway
-Utilice la canalización CI/CD de GitHub Actions, AWS CodePipeline o Serverless Pro CI/CD para gestionar las implementaciones.
-Puede tomar capturas de pantalla de la configuración de CI/CD e incluirlas en el archivo README.
-La CI/CD debe activar una implementación basada en un push git a la rama maestra que pasa por ella e implementa la API REST de Serverless Framework de backend y cualquier otro recurso, por ejemplo, las tablas de DynamoDB.
+Desafio 1
+El desafío 1
+Cree una API de Serverless Framework con AWS AppSync o APY RESTque admita la funcionalidad CRUD (crear, leer, actualizar, eliminar) y tenga Serverless Pro CI/CD configurado.
+Puede tomar capturas de pantalla de la configuración de Serverless Pro e incluirlas en el archivo README.
+La CI/CD debe activar una implementación basada en un push git a la rama maestra que pasa e implementa la API de Serverless Framework de backend.
 Requisitos
-1.	Todo el código de la aplicación debe escribirse utilizando NodeJS, Typescript también es aceptable.
-2.	Toda la infraestructura de AWS debe automatizarse con IAC mediante Serverless Framework
-3.	La API REST de API Gateway debe almacenar datos en DynamoDB
-4.	Debe haber 4-5 lambdas que incluyan la siguiente funcionalidad CRUD (Crear, Leer, Actualizar, Eliminar) *no utilice la integración del proxy de servicio directamente a DynamoDB desde API Gateway
-5.	Construya la canalización CI/CD para soportar implementaciones de múltiples etapas, por ejemplo, desarrollo, producción
-6.	La plantilla debe estar completamente funcional y documentada.
-7.	Un repositorio público de GitHub debe compartirse con confirmaciones frecuentes
-8.	Se debe grabar un video ( www.loom.com ) de usted hablando sobre el código de la aplicación, IAC y cualquier área adicional que desee resaltar en su solución para demostrar habilidades adicionales.
-Por favor, dedique a esto únicamente el tiempo que considere razonable.
-Opcionalmente
-No dude en incluir cualquiera de los siguientes para demostrar experiencia adicional:
-1.	Haga que el proyecto se ajuste a un caso comercial específico, por ejemplo, API de cafeterías frente a CRUD de notas directamente desde los documentos de AWS
-2.	Empaquetado de AWS Lambda
-3.	Organización de archivos YAML
-4.	Bash/otros scripts para apoyar la implementación
-5.	Pruebas unitarias, pruebas de integración, etc.
+1.	Toda la infraestructura de AWS debe automatizarse con IAC utilizando Serverless Framework y CloudFormation según sea necesario
+2.	La API de AppSync debe almacenar datos en DynamoDB
+3.	Se debe aprovechar Serverless Pro para construir el pipeline de CI/CD y soportar implementaciones de múltiples etapas
+4.	La plantilla debe estar completamente funcional y documentada.
+5.	Un repositorio público de GitHub debe compartirse con confirmaciones frecuentes
+6.	Se debe grabar un video ( www.loom.com ) de usted hablando sobre el código de la aplicación, IAC y cualquier área adicional que desee resaltar en su solución para demostrar habilidades adicionales.
 
-
-
-<!--
 title: 'AWS Simple HTTP Endpoint example in NodeJS'
 description: 'This template demonstrates how to make a simple HTTP API with Node.js running on AWS Lambda and API Gateway using the Serverless Framework.'
 layout: Doc
